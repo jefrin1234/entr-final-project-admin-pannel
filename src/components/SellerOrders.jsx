@@ -32,12 +32,12 @@ function SellerOrders() {
 
   return (
     <div className="max-w-4xl mx-auto p-6">
-      <h1 className="text-2xl font-bold text-center mb-6">Your Orders</h1>
+      <h1 className="text-2xl font-bold text-center mb-6">Seller Orders</h1>
       {orders.length === 0 ? (
         <div className="flex flex-col items-center justify-center space-y-4 p-8 text-center">
           <FaBoxOpen className="text-6xl text-gray-400 dark:text-gray-600" />
           <h2 className="text-2xl font-semibold text-gray-700 dark:text-gray-300">No orders found</h2>
-          <p className="text-gray-500 dark:text-gray-400">You have no new orders!</p>
+          <p className="text-gray-500 dark:text-gray-400"> no new orders!</p>
         </div>
       ) : (
         orders.map((order) => {
