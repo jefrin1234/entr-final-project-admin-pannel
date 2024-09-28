@@ -75,7 +75,7 @@ function Products() {
       {loading ? (
         <p className="text-center text-gray-500">Loading...</p>
       ) : (
-        <div className="overflow-x-auto min-h-[300px]"> {/* Ensuring minimum height */}
+        <div className="overflow-x-auto min-h-[300px]">
           <table className="min-w-full border border-gray-300 bg-white rounded-lg shadow-md">
             <thead className="bg-gray-800 text-white">
               <tr>
@@ -112,7 +112,7 @@ function Products() {
       )}
 
       {totalPages > 1 && (
-        <div className="flex justify-center space-x-2 mt-4"> {/* Adjusted spacing */}
+        <div className="flex justify-center space-x-2 mt-4">
           {Array.from({ length: totalPages }, (_, index) => (
             <button
               key={index + 1}

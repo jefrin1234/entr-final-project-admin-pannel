@@ -41,7 +41,7 @@ const SalesDashboard = () => {
     fetchSalesData();
   }, []);
 
-  // Filtering data based on selected year and month
+  
   const filteredMonthlySales = salesData.monthlySales.filter(
     (sale) => sale._id.year === selectedYear
   );
@@ -72,12 +72,12 @@ const SalesDashboard = () => {
     resetSelections();
   };
 
-  // Function to calculate total sales based on the active chart
+ 
   const calculateTotalSales = (data) => {
     return data.reduce((total, sale) => total + sale.totalSales, 0);
   };
 
-  // Calculate total sales based on the active chart type
+
   let totalSales = 0;
   if (activeChart === "yearly") {
     totalSales = calculateTotalSales(salesData.yearlySales);
@@ -91,7 +91,7 @@ const SalesDashboard = () => {
     <div className="container mx-auto p-4 bg-gray-100 rounded-lg shadow-lg">
       <h2 className="text-center text-2xl font-bold mb-4 text-gray-700">Sales Dashboard</h2>
       
-      {/* Buttons to select chart type */}
+     
       <div className="flex justify-center space-x-4 my-4">
         {["yearly", "monthly", "daily"].map((type) => (
           <button
@@ -106,7 +106,7 @@ const SalesDashboard = () => {
         ))}
       </div>
 
-      {/* Year Selector: visible for monthly and daily charts */}
+    
       {activeChart !== "yearly" && (
         <div className="my-4 flex justify-center">
           <label className="mr-2 font-semibold">Select Year: </label>
@@ -130,7 +130,7 @@ const SalesDashboard = () => {
         </div>
       )}
 
-      {/* Month Selector: visible for daily charts */}
+     
       {activeChart === "daily" && selectedYear && (
         <div className="my-4 flex justify-center">
           <label className="mr-2 font-semibold">Select Month: </label>
@@ -153,14 +153,14 @@ const SalesDashboard = () => {
         </div>
       )}
 
-      {/* Display Total Sales */}
+      
       <div className="text-center text-xl font-bold text-gray-800 mb-4">
         {activeChart === "yearly" && `Total Yearly Sales: ₹${totalSales.toLocaleString()}`}
         {activeChart === "monthly" && selectedYear && `Total Monthly Sales for ${selectedYear}: ₹${totalSales.toLocaleString()}`}
         {activeChart === "daily" && selectedYear && selectedMonth && `Total Daily Sales for ${new Date(selectedYear, selectedMonth - 1).toLocaleString("en-US", { month: "long", year: "numeric" })}: ₹${totalSales.toLocaleString()}`}
       </div>
 
-      {/* Yearly Sales Chart */}
+     
       {activeChart === "yearly" && salesData.yearlySales.length > 0 && (
         <div className="flex justify-center">
           <BarChart
@@ -185,7 +185,7 @@ const SalesDashboard = () => {
         </div>
       )}
 
-      {/* Monthly Sales Chart */}
+    
       {activeChart === "monthly" &&
         selectedYear &&
         filteredMonthlySales.length > 0 && (
@@ -220,7 +220,7 @@ const SalesDashboard = () => {
           </div>
         )}
 
-      {/* Daily Sales Chart */}
+      
       {activeChart === "daily" &&
         selectedYear &&
         selectedMonth &&
@@ -248,7 +248,7 @@ const SalesDashboard = () => {
           </div>
         )}
 
-      {/* Display message if no sales data */}
+    
       {(activeChart === "monthly" &&
         selectedYear &&
         filteredMonthlySales.length === 0) ||

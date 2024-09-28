@@ -49,13 +49,13 @@ function SellerOrders() {
           return (
             <div key={order._id} className="bg-white shadow-md rounded-lg p-4 mb-4">
               <h2 className="text-xl font-semibold">Order ID: {order._id}</h2>
-              {/* Show seller-specific total price */}
+             
               <p className="text-gray-700"> Total Price: <span className="font-bold">${sellerTotal.toFixed(2)}</span></p>
               <p className="text-gray-700">Payment Method: <span className="font-bold">{order.paymentMethod}</span></p>
               <p className="text-gray-700">Payment Status: <span className="font-bold">{order.paymentStatus}</span></p>
               <p className="text-gray-700">Order Status: <span className="font-bold">{order.orderStatus}</span></p>
 
-              {/* User Details */}
+              
               <div className="border p-4 rounded-md mt-4">
                 <p className="text-black font-bold mt-2">Shipping Address:</p>
                 <div className="ml-4 text-gray-700 flex flex-col sm:flex-row sm:flex-wrap gap-y-1 gap-x-4">
@@ -71,15 +71,14 @@ function SellerOrders() {
               <div className="mt-4">
                 {order.items.map((item) => (
                   <div key={item.productId._id} className="border p-4 mb-2 rounded bg-gray-100">
-                    {/* Product Image */}
+                
                     <img src={item.productId.images[0]} alt={item.productName} className="w-16 h-16 object-cover mb-2 rounded-md" />
                     <h4 className="font-semibold">{item.productId.name}</h4>
                     <p>Quantity: <span className="font-bold">{item.quantity}</span></p>
                     <p>Price: <span className="font-bold">${item.price}</span></p>
                     <p>Status: <span className={`font-bold ${item.status === 'delivered' ? 'text-green-600' : 'text-yellow-600'}`}>{item.status}</span></p>
 
-                    {/* Status Update Dropdown */}
-                   
+                
                   </div>
                 ))}
               </div>

@@ -4,16 +4,16 @@ import toast from 'react-hot-toast';
 import { axiosInstance } from '../config/axiosInstance';
 
 const ProductCard = ({ product, setProducts }) => {
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleViewRatings = () => {
-    navigate(`/products/product-ratings/${product._id}`); // Navigate to the ratings page
+    navigate(`/products/product-ratings/${product._id}`); 
   };
 
   const onToggleVerification = async (productId) => {
     try {
       const response = await axiosInstance.post(`/products/product-deactivate/${productId}`);
-      const updatedProduct = response.data.data; // Get the updated product info
+      const updatedProduct = response.data.data;
 
       setProducts((prevProducts) => 
         prevProducts.map((prod) => 

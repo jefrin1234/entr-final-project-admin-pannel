@@ -1,15 +1,15 @@
-// Home.js
+
 import React, { useState } from 'react';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { User, Box, ShoppingCart, DollarSign, LogOut, Bell, X, Users, HandPlatter } from 'lucide-react';
 import { useSelector } from 'react-redux';
-import LogoutModal from '../components/Logout'; // Import the LogoutModal component
+import LogoutModal from '../components/Logout'; 
 import { axiosInstance } from '../config/axiosInstance';
 import toast from 'react-hot-toast';
 function Home() {
   const navigate = useNavigate()
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false); // State for the modal
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
   const { unReadNotifications } = useSelector(state => state.admin);
   const location = useLocation();
 
@@ -22,7 +22,7 @@ function Home() {
   };
 
   const handleLogoutClick = () => {
-    setIsLogoutModalOpen(true); // Open the modal when logout is clicked
+    setIsLogoutModalOpen(true);
   };
 
   const handleLogoutConfirm =async () => {
@@ -38,12 +38,12 @@ function Home() {
     } catch (error) {
       
     }
-// Replace with your logout logic
+
   };
 
   return (
     <div className="flex h-screen">
-      {/* Sidebar */}
+     
       <aside className={`bg-gradient-to-b bg-gray-500 text-white w-64 max-w-xs shadow-xl border-r border-gray-200 flex-shrink-0 fixed inset-y-0 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 z-30 sm:relative sm:translate-x-0 overflow-auto`}>
         <div className="p-6 flex justify-between items-center">
           <h2 className="text-xl font-bold">Dashboard</h2>
@@ -138,12 +138,12 @@ function Home() {
         </nav>
       </aside>
 
-      {/* Backdrop for mobile view */}
+     
       {isSidebarOpen && (
         <div className="fixed inset-0 bg-black opacity-50 z-20 sm:hidden" onClick={handleBackdropClick}></div>
       )}
 
-      {/* Mobile menu button */}
+   
       <div className="flex items-center justify-center p-4 bg-gray-400 sm:hidden">
         <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="text-white">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-6 w-6">
@@ -152,12 +152,12 @@ function Home() {
         </button>
       </div>
 
-      {/* Main Content */}
+     
       <main className="flex-1 p-8 bg-gray-100 overflow-y-auto">
         <Outlet />
       </main>
 
-      {/* Logout Confirmation Modal */}
+   
       <LogoutModal 
         isOpen={isLogoutModalOpen} 
         onClose={() => setIsLogoutModalOpen(false)} 

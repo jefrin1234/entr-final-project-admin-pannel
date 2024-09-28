@@ -13,7 +13,7 @@ function SellerProducts() {
   const [loading, setLoading] = useState(false);
   const itemsPerPage = 10;
 
-  // Fetch products with pagination and search
+ 
   const fetchProducts = async () => {
     try {
       setLoading(true);
@@ -26,7 +26,7 @@ function SellerProducts() {
       });
 
       setProducts(response.data.data);
-      setTotalPages(response.data.totalPages); // Ensure you're getting totalPages from response
+      setTotalPages(response.data.totalPages); 
     } catch (error) {
       toast.error('Error fetching products');
     } finally {
@@ -40,12 +40,12 @@ function SellerProducts() {
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
-    setCurrentPage(1); // Reset to first page on search
+    setCurrentPage(1);
   };
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    setCurrentPage(1); // Reset to first page on search
+    setCurrentPage(1); 
   };
 
   const handlePageChange = (page) => {

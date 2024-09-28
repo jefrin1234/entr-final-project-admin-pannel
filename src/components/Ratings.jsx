@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { axiosInstance } from '../config/axiosInstance';
-import { FaStar } from 'react-icons/fa'; // Import star icon
+import { FaStar } from 'react-icons/fa'; 
 import toast from 'react-hot-toast';
 
 function Ratings() {
   const [ratings, setRatings] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalRatings, setTotalRatings] = useState(0);
-  const limit = 5; // Number of ratings per page
+  const limit = 5;
   const { productId } = useParams();
 
   const fetchProductRatings = async (page) => {
@@ -60,7 +60,7 @@ function Ratings() {
           ratings.map((rating) => (
             <div key={rating._id} className="flex flex-col md:flex-row items-start md:items-center justify-between border-b py-4 gap-4">
               <div className="flex items-center space-x-2">
-                {/* Display star rating */}
+              
                 {[...Array(5)].map((_, index) => (
                   <FaStar
                     key={index}
@@ -86,7 +86,7 @@ function Ratings() {
         )}
       </div>
 
-      {/* Pagination */}
+     
       <div className="flex justify-center mt-6 mb-4">
         {ratings?.length > 0 && (
           <>

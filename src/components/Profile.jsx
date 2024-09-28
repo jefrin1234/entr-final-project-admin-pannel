@@ -1,4 +1,4 @@
-// src/components/Profile.js
+
 import React, { useEffect, useState } from 'react';
 import { axiosInstance } from '../config/axiosInstance';
 import toast from 'react-hot-toast';

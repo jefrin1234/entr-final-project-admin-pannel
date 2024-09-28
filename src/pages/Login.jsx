@@ -46,12 +46,11 @@ export default function App() {
 
 
   return (
-    /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
+  
     <div className="min-h-screen flex flex-col justify-center items-center bg-green-500 px-4">
-      {/* DressCart Branding Outside the Form */}
+    
       <h1 className="text-5xl font-bold text-white mb-10">Trends</h1>
 
-      {/* Login Form */}
       <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-lg">
         <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6"> Login to Admin pannel </h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">

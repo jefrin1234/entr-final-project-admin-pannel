@@ -5,19 +5,18 @@ import { axiosInstance } from '../config/axiosInstance';
 import toast from 'react-hot-toast';
 
 function NotificationDetails() {
-  const { id } = useParams(); // Get notification ID from URL
-  const { notifications } = useSelector((state) => state.admin); // Get notifications from Redux state
-  
-  const [notification, setNotification] = useState(null); // Local state for the notification
-  const [loading, setLoading] = useState(true); // Loading state for data fetching
-  const [verified, setVerified] = useState(false); // Real-time seller verification status
+  const { id } = useParams(); 
+  const { notifications } = useSelector((state) => state.admin); 
+  const [notification, setNotification] = useState(null); 
+  const [loading, setLoading] = useState(true); 
+  const [verified, setVerified] = useState(false);
 
   useEffect(() => {
     const foundNotification = notifications.find((notification) => notification._id === id);
     if (foundNotification) {
       setNotification(foundNotification);
-      fetchVerificationStatus(foundNotification); // Fetch verification status on load
-      setLoading(false); // Data is loaded
+      fetchVerificationStatus(foundNotification); 
+      setLoading(false); 
 
       if (foundNotification.isRead === false) {
         handleUpdateNotification(foundNotification._id);
@@ -27,7 +26,7 @@ function NotificationDetails() {
     }
   }, [notifications, id]);
 
-  // Fetch real-time seller verification status
+  
   const fetchVerificationStatus = async (data) => {
     try {
       setLoading(true);
@@ -39,7 +38,7 @@ function NotificationDetails() {
       }
     
       const isVerified = response.data.data.verified === true 
-      setVerified(isVerified); // Set verified status based on fetched data
+      setVerified(isVerified); 
       setLoading(false);
     } catch (error) {
      toast.error("error getting notification status")
@@ -69,7 +68,7 @@ function NotificationDetails() {
         toast.success("Product verified successfully");
       }
 
-      setVerified(true); // Update the local state to verified
+      setVerified(true);
     } catch (error) {
     
       toast.error("Error verifying");
