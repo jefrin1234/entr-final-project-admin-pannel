@@ -1,5 +1,6 @@
 import { User } from 'lucide-react';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Header() {
   return (
@@ -17,10 +18,10 @@ function Header() {
 
         {/* Right Section: User Icon */}
         <div className="flex items-center space-x-4">
-          <div className="flex items-center space-x-2">
+          <Link to={'account'} className="flex items-center space-x-2">
             <User className="h-6 w-6 text-gray-300" />
             <span className="hidden sm:inline-block text-sm">Admin</span>
-          </div>
+          </Link>
         </div>
       </div>
     </header>

@@ -1,70 +1,4 @@
-// import React, { useEffect, useState } from 'react'
-// import { axiosInstance } from '../config/axiosInstance'
-// import OrderCard from './OrderCard'
 
-// function AllOrders() {
-  
-  
-
-//   const [paidOrders,setPaidOrders] = useState([])
-//   const [unPaidOrders,setUnPaidOrders] = useState([])
-
-//   const fetchAllOrders = async()=>{
-//     try {
-
-//       const response  = await axiosInstance({
-//         method:'GET',
-//         url:"/orders/all-orders"
-//       })
-
-//       console.log(response)
-
-      
-
-//       const orders = response.data.data
-
-//       setUnPaidOrders(orders.filter((order)=>order.paymentStatus === 'unpaid'))
-//       setPaidOrders(orders.filter((order)=>order.paymentStatus === 'paid'))
-
-//     } catch (error) {
-//       toast.error("Error getting all orders")
-//     }
-//   }
-
-
-//   useEffect(()=>{
-//     fetchAllOrders()
-//   },[])
-
-//   console.log(unPaidOrders)
-//   console.log(paidOrders)
-
-//   return (
-//     <div>
-//       <h1>Orders List</h1>
-//       <div>
-//         <h2>Paid Orders</h2>
-//         {
-//           paidOrders.map((order)=>(
-//             <div key={order._Id}>
-//                <OrderCard order={order} type={'all'}/>
-//             </div>
-//           ))
-//         }
-//       </div>
-//       <div>
-//         <h2>Unpaid orders</h2>
-//         {
-//           unPaidOrders.map((order)=>(
-//             <OrderCard order={order}/>
-//           ))
-//         }
-//       </div>
-//     </div>
-//   )
-// }
-
-// export default AllOrders
 
 
 import React, { useEffect, useState } from 'react';
@@ -76,10 +10,10 @@ function AllOrders() {
   const [paidOrders, setPaidOrders] = useState([]);
   const [unPaidOrders, setUnPaidOrders] = useState([]);
   const [showPaidOrders, setShowPaidOrders] = useState(true);
-  const [sortBy, setSortBy] = useState('totalPrice'); // Default sort by totalPrice
-  const [sortOrder, setSortOrder] = useState('desc'); // Default descending order
-  const [orderStatus, setOrderStatus] = useState(''); // Default status
-  const [paymentMethod, setPaymentMethod] = useState(''); // Default payment method
+  const [sortBy, setSortBy] = useState('totalPrice'); 
+  const [sortOrder, setSortOrder] = useState('desc');
+  const [orderStatus, setOrderStatus] = useState(''); 
+  const [paymentMethod, setPaymentMethod] = useState(''); 
 
   const fetchAllOrders = async () => {
     try {
@@ -139,10 +73,7 @@ function AllOrders() {
         </button>
       </div>
       <div className="flex justify-center mb-6 space-x-4">
-        {/* Filter by Order Status */}
-   
-        
-        {/* Filter by Payment Method */}
+  
         <select
           value={paymentMethod}
           onChange={(e) => setPaymentMethod(e.target.value)}

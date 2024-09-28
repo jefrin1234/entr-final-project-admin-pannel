@@ -15,6 +15,9 @@ import Ratings from "../components/Ratings";
 import SellerProducts from "../components/SellerProducts";
 import AllOrders from "../components/AllOrders";
 import SellerOrders from "../components/SellerOrders";
+import Sales from "../components/Sales";
+import SalesDashboard from "../components/Sales";
+import Profile from "../components/Profile";
 
 
 export const router = createBrowserRouter([
@@ -30,6 +33,10 @@ export const router = createBrowserRouter([
         path:'',
         element:<Home/>,
         children:[
+          {
+            path:'/',
+            element:<SalesDashboard/>
+          },
           {
             path:'notifications',
             element:<Notifications/>
@@ -69,7 +76,13 @@ export const router = createBrowserRouter([
           {
             path:'seller/seller-orders/:sellerId',
             element:<SellerOrders/>
+          },
+       
+          {
+            path:"account",
+            element:<Profile/>
           }
+
       
          
         ]

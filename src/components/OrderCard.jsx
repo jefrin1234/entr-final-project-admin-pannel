@@ -1,45 +1,4 @@
-// // OrderCard.js
-// import React from 'react';
-// import { Link } from 'react-router-dom';
-// function OrderCard({ order,type }) {
-//   console.log(order)
-//   return (
-//     <div>
-//       <span>OrderId : {order._id}</span>
-//       <span>Total Price : {type==='all' ? order.totalPrice : '0'}</span>
-//       <span>Payment Method: {order.paymentMethod}</span>
-//       <span>Payment status {order.orderStatus}</span>
-//       <div>
-//         <p>
-//           {order.address.name}
-//           {order.address.streetAddress}
-//           {order.address.city}
-//           {order.address.state}
-//           {order.address.postalCode}
-//         </p>
-//         <div>
-//          {
-//           order.items.map((item)=>(
-          
-//            <div>
-//               <img src={item?.productId?.images[0]} alt="" />
-//               <span> Product quantity{item?.quantity}</span>
-//               <span> product Price{item?.price}</span>
-//               <span> Product shipping status{item?.status}</span>
-//              <Link to={`/sellers/seller-details/${item.sellerId?._id}`}>
-//              <span> Seller :{item?.sellerId?.businessName}</span>
-//              </Link>
-//            </div>
-//           ))
-//          }
-//         </div>
-       
-//       </div>
-//     </div>
-//   );
-// }
 
-// export default OrderCard;
 
 
 import React from 'react';

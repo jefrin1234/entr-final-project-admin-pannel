@@ -1,27 +1,48 @@
+// Home.js
 import React, { useState } from 'react';
-import { Link, Outlet, useLocation } from 'react-router-dom';
-import {  User, Box, ShoppingCart,  DollarSign, LogOut, Bell, X, Users, HandPlatter } from 'lucide-react';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { User, Box, ShoppingCart, DollarSign, LogOut, Bell, X, Users, HandPlatter } from 'lucide-react';
 import { useSelector } from 'react-redux';
-
-
-
+import LogoutModal from '../components/Logout'; // Import the LogoutModal component
+import { axiosInstance } from '../config/axiosInstance';
+import toast from 'react-hot-toast';
 function Home() {
-
-  const [isSidebarOpen,setIsSidebarOpen] = useState(false)
-  const {unReadNotifications} = useSelector(state=>state.admin)
+  const navigate = useNavigate()
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false); // State for the modal
+  const { unReadNotifications } = useSelector(state => state.admin);
   const location = useLocation();
 
   const handleLinkClick = () => {
-   setIsSidebarOpen  
+    setIsSidebarOpen(false);
   };
 
   const handleBackdropClick = () => {
-    setIsSidebarOpen(false);  
+    setIsSidebarOpen(false);
   };
 
+  const handleLogoutClick = () => {
+    setIsLogoutModalOpen(true); // Open the modal when logout is clicked
+  };
+
+  const handleLogoutConfirm =async () => {
+    try {
+      const response = await axiosInstance({
+        method:'POST',
+        url:'/admin/logout'
+      })
+      toast.success("Logout success")
+      navigate('/login')
+      setIsLogoutModalOpen(false);
+      console.log("User logged out"); 
+    } catch (error) {
+      
+    }
+// Replace with your logout logic
+  };
 
   return (
-    <div className="flex h-screen ">
+    <div className="flex h-screen">
       {/* Sidebar */}
       <aside className={`bg-gradient-to-b bg-gray-500 text-white w-64 max-w-xs shadow-xl border-r border-gray-200 flex-shrink-0 fixed inset-y-0 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 z-30 sm:relative sm:translate-x-0 overflow-auto`}>
         <div className="p-6 flex justify-between items-center">
@@ -57,7 +78,7 @@ function Home() {
               <Link
                 to="products"
                 onClick={handleLinkClick}
-                className={`flex items-center p-3 rounded-md transition-colors duration-300 ${location.pathname.includes('all-product') ? 'bg-orange-500 text-green-900' : 'hover:bg-blue-600 hover:text-white'}`}
+                className={`flex items-center p-3 rounded-md transition-colors duration-300 ${location.pathname.includes('product') ? 'bg-orange-500 text-green-900' : 'hover:bg-blue-600 hover:text-white'}`}
               >
                 <Box className="mr-3 h-5 w-5" />
                 Products
@@ -79,13 +100,13 @@ function Home() {
                 onClick={handleLinkClick}
                 className={`flex items-center p-3 rounded-md transition-colors duration-300 ${location.pathname.includes('uploadproducts') ? 'bg-red-500 text-green-900' : 'hover:bg-blue-600 hover:text-white'}`}
               >
-                <HandPlatter  className="mr-3 h-5 w-5" />
+                <HandPlatter className="mr-3 h-5 w-5" />
                 Sellers
               </Link>
             </li>
             <li>
-              <Link                    
-                to="all-orders"               
+              <Link
+                to="all-orders"
                 onClick={handleLinkClick}
                 className={`flex items-center p-3 rounded-md transition-colors duration-300 ${location.pathname.includes('orders') ? 'bg-violet-600 text-green-900' : 'hover:bg-blue-600 hover:text-white'}`}
               >
@@ -93,12 +114,11 @@ function Home() {
                 Orders
               </Link>
             </li>
-           
             <li>
               <Link
-                to="sales"
+                to=""
                 onClick={handleLinkClick}
-                className={`flex items-center p-3 rounded-md transition-colors duration-300 ${location.pathname.includes('sales') ? 'bg-purple-900 text-green-900' : 'hover:bg-blue-600 hover:text-white'}`}
+                className={`flex items-center p-3 rounded-md transition-colors duration-300 ${location.pathname.includes('sales') ? 'bg-purple-900 text-white' : 'hover:bg-blue-600 hover:text-white'}`}
               >
                 <DollarSign className="mr-3 h-5 w-5" />
                 Sales
@@ -106,8 +126,8 @@ function Home() {
             </li>
             <li>
               <Link
-               
-                onClick={() => setShowLogoutModal(true)}
+                to="#"
+                onClick={handleLogoutClick} // Change to handleLogoutClick
                 className={`flex items-center p-3 rounded-md transition-colors duration-300 ${location.pathname.includes('logout') ? 'bg-red-400 text-green-900' : 'hover:bg-blue-600 hover:text-white'}`}
               >
                 <LogOut className="mr-3 h-5 w-5" />
@@ -120,10 +140,7 @@ function Home() {
 
       {/* Backdrop for mobile view */}
       {isSidebarOpen && (
-        <div
-          className="fixed inset-0 bg-black opacity-50 z-20 sm:hidden"
-          onClick={handleBackdropClick}
-        ></div>
+        <div className="fixed inset-0 bg-black opacity-50 z-20 sm:hidden" onClick={handleBackdropClick}></div>
       )}
 
       {/* Mobile menu button */}
@@ -136,12 +153,16 @@ function Home() {
       </div>
 
       {/* Main Content */}
-      <main className="flex-1 p-8 bg-gray-100  overflow-y-auto">
+      <main className="flex-1 p-8 bg-gray-100 overflow-y-auto">
         <Outlet />
       </main>
 
-     
-
+      {/* Logout Confirmation Modal */}
+      <LogoutModal 
+        isOpen={isLogoutModalOpen} 
+        onClose={() => setIsLogoutModalOpen(false)} 
+        onConfirm={handleLogoutConfirm} 
+      />
     </div>
   );
 }

@@ -2,20 +2,19 @@ import React, { useState } from 'react';
 import { axiosInstance } from '../config/axiosInstance';
 import toast from 'react-hot-toast';
 function EditUser({ role, onClose, name, email, fetchCustomers, userId }) {
-  const [newRole, setNewRole] = useState(role[0]); // Default to the first role
-
+  const [newRole, setNewRole] = useState(role[0]);
   const updateRole = async () => {
     try {
      
     const response =   await axiosInstance({
         method: 'PATCH',
-        url: `/admin/role-update/${userId}`, // Ensure this endpoint exists in your backend
+        url: `/admin/role-update/${userId}`, 
         data: { role: newRole },
       });
      
       toast.success("User updated successfully")
-      fetchCustomers(); // Refresh customer list after updating
-      onClose(); // Close modal after updating
+      fetchCustomers(); 
+      onClose(); 
     } catch (error) {
      toast.error("error updating user role")
     }
