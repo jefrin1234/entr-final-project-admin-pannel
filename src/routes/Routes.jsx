@@ -11,6 +11,11 @@ import Customers from "../components/Customers";
 import Products from "../components/Products";
 import Sellers from "../components/Sellers";
 import SellerDetails from "../components/SellerDetails";
+import Ratings from "../components/Ratings";
+import SellerProducts from "../components/SellerProducts";
+import AllOrders from "../components/AllOrders";
+import SellerOrders from "../components/SellerOrders";
+
 
 export const router = createBrowserRouter([
   {
@@ -42,13 +47,31 @@ export const router = createBrowserRouter([
             element:<Products/>
           },
           {
+            path:'products/product-ratings/:productId',
+            element:<Ratings/>
+          },
+          {
             path:'sellers',
             element:<Sellers/>
           },
           {
             path:'sellers/seller-details/:sellerId',
             element:<SellerDetails/>
+          },
+          {
+            path:'seller/products/:sellerId',
+            element:<SellerProducts/>
+          },
+          {
+            path:'all-orders',
+            element:<AllOrders/>
+          },
+          {
+            path:'seller/seller-orders/:sellerId',
+            element:<SellerOrders/>
           }
+      
+         
         ]
       },
       

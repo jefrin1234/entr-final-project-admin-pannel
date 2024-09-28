@@ -85,7 +85,7 @@ function Home() {
             </li>
             <li>
               <Link                    
-                to="orders"               
+                to="all-orders"               
                 onClick={handleLinkClick}
                 className={`flex items-center p-3 rounded-md transition-colors duration-300 ${location.pathname.includes('orders') ? 'bg-violet-600 text-green-900' : 'hover:bg-blue-600 hover:text-white'}`}
               >
