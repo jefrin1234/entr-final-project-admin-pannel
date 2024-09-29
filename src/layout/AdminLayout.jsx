@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Outlet } from 'react-router-dom';
-import axiosInstance from '../../../user-page/src/config/axiosInstance';
+import { axiosInstance } from '../config/axiosInstance';
 import { useDispatch } from 'react-redux';
 import { setAdminNotifications } from '../slices/adminSlice';
 import toast from 'react-hot-toast';
