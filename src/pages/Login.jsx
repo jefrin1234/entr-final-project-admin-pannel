@@ -2,9 +2,8 @@ import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
-import axiosInstance from "../../../user-page/src/config/axiosInstance"
 import { setAdminDetails } from "../slices/adminSlice"
-
+import { axiosInstance } from '../config/axiosInstance';
 
 export default function App() {
 
