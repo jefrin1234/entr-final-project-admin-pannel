@@ -15,7 +15,6 @@ import Ratings from "../components/Ratings";
 import SellerProducts from "../components/SellerProducts";
 import AllOrders from "../components/AllOrders";
 import SellerOrders from "../components/SellerOrders";
-import Sales from "../components/Sales";
 import SalesDashboard from "../components/Sales";
 import Profile from "../components/Profile";
 

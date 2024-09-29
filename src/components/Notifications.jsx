@@ -5,7 +5,7 @@ import { FaTrashAlt } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import Spinner from './Loading';
 import { Link } from 'react-router-dom';
-import { axiosInstance } from '../config/axiosInstance';
+
 
 function Notifications() {
   const [loading, setLoading] = useState(false);
