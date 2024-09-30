@@ -6,14 +6,26 @@ import { axiosInstance } from '../config/axiosInstance';
 const ProductCard = ({ product, setProducts }) => {
   const navigate = useNavigate();
 
+  console.log(product)
+
   const handleViewRatings = () => {
     navigate(`/products/product-ratings/${product._id}`); 
   };
 
   const onToggleVerification = async (productId) => {
     try {
+
+
       const response = await axiosInstance.post(`/products/product-deactivate/${productId}`);
+
+
       const updatedProduct = response.data.data;
+
+      console.log(response)
+     
+
+      
+     
 
       setProducts((prevProducts) => 
         prevProducts.map((prod) => 
@@ -21,11 +33,16 @@ const ProductCard = ({ product, setProducts }) => {
         )
       );
 
-      toast.success(`Product has been ${updatedProduct.verified ? 'activated' : 'deactivated'}.`);
+      toast.success(`Product has been ${updatedProduct.verified === true ? 'activated' : 'deactivated'}.`);
     } catch (error) {
       toast.error('Error updating product verification status.');
     }
   };
+
+
+
+
+  
 
   const onDelete = async (productId) => {
     try {
@@ -73,7 +90,7 @@ const ProductCard = ({ product, setProducts }) => {
           }`}
           onClick={() => onToggleVerification(product._id)}
         >
-          {product.verified ? 'Deactivate' : 'Activate'}
+          {product.verified === true ? 'Deactivate' : 'Activate'}
         </button>
         <button
           className="bg-blue-500 text-white px-2 py-1 rounded-md hover:bg-blue-600 transition-colors duration-300"

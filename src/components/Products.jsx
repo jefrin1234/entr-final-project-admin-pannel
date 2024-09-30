@@ -96,7 +96,7 @@ function Products() {
                   <ProductCard
                     key={product._id}
                     product={product}
-                   
+                    setProducts={setProducts}
                   />
                 ))
               ) : (
