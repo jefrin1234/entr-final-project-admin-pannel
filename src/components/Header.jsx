@@ -7,15 +7,14 @@ function Header() {
     <header className="bg-gray-800 text-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
 
-        <div className="flex items-center space-x-4">
+        <Link to={''} className="flex items-center space-x-4">
           <h1 className="text-2xl font-bold tracking-wider">Trends</h1>
-        </div>
+        </Link>
 
       
-        <div className="hidden sm:block">
+        <Link to={''} className="hidden sm:block">
           <h2 className="text-lg font-semibold tracking-wide">Admin Dashboard</h2>
-        </div>
-
+        </Link>
        
         <div className="flex items-center space-x-4">
           <Link to={'account'} className="flex items-center space-x-2">

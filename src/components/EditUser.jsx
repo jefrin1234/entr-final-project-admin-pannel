@@ -41,7 +41,7 @@ function EditUser({ role, onClose, name, email, fetchCustomers, userId }) {
           >
             <option value="user">User</option>
             <option value="admin">Admin</option>
-            {/* Add other roles if necessary */}
+           
           </select>
         </div>
         <div className="flex justify-end space-x-4">

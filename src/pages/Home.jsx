@@ -127,7 +127,7 @@ function Home() {
             <li>
               <Link
                 to="#"
-                onClick={handleLogoutClick} // Change to handleLogoutClick
+                onClick={handleLogoutClick}
                 className={`flex items-center p-3 rounded-md transition-colors duration-300 ${location.pathname.includes('logout') ? 'bg-red-400 text-green-900' : 'hover:bg-blue-600 hover:text-white'}`}
               >
                 <LogOut className="mr-3 h-5 w-5" />

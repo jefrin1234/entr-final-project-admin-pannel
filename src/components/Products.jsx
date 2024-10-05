@@ -61,7 +61,7 @@ function Products() {
           type="text"
           value={searchQuery}
           onChange={handleSearchChange}
-          placeholder="Search products..."
+          placeholder="Search ..."
           className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
         <button
