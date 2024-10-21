@@ -28,7 +28,7 @@ function Products() {
       setProducts(response.data.data);
       setTotalPages(response.data.pagination ? response.data.pagination.totalPages : 1);
     } catch (error) {
-    toast.error("error getting product ")
+     console.log(error)
     } finally {
       setLoading(false);
     }
